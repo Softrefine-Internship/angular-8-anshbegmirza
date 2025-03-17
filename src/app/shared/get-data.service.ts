@@ -185,7 +185,7 @@ export class GetDataService {
     },
   ];
 
-  getData(): Observable<any> {
+  getData() {
     return of(this.dummyArray.slice());
   }
 }

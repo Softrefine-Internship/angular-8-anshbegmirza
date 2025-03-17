@@ -1,1 +1,40 @@
-<p>table works!</p>
+<div class="table-header">
+  <div class="table-controls dropdown">
+    <!-- Items per page dropdown -->
+    <p>Items per page :</p>
+    <select class="form-select" [(ngModel)]="itemsPerPage" (change)="onItemsPerPageChange()">
+      <option *ngFor="let item of itemsPerPageOptions" [value]="item">{{item}}</option>
+    </select>
+  </div>
+
+  <div class="table-controls dropdown">
+    <p>Page :</p>
+    <select class="form-select" [(ngModel)]="currentPage" (change)="onPageChange()">
+      <option *ngFor="let page of pageOptions" [value]="page">{{page}}</option>
+    </select>
+  </div>
+
+  <hr>
+
+  <table class="table  table-bordered table-hover">
+    <!-- Table header row -->
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Salary</th>
+      </tr>
+    </thead>
+    <!-- Table data -->
+    <tbody>
+      <tr *ngFor="let employee of employees | pagination : currentPage : itemsPerPage; let i = index "
+        [ngStyle]="{'background-color': i % 2 === 0 ? '#B1F0F7' : '#81BFDA'}">
+        <td>{{employee.id}}</td>
+        <td>{{employee.employee_name}}</td>
+        <td>{{employee.employee_age}}</td>
+        <td>{{employee.employee_salary | salary }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

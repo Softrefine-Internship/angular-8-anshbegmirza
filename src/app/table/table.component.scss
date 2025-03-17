@@ -1,0 +1,15 @@
+.dropdown {
+  // outline: 1px solid lime;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1rem;
+  p {
+    text-wrap: nowrap;
+    margin: 0;
+    font-size: 1rem;
+  }
+  select {
+    width: max-content;
+  }
+}
