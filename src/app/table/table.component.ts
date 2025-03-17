@@ -30,21 +30,28 @@ export class TableComponent implements OnInit {
 
   calculateTotalPages(): void {
     this.totalPages = Math.ceil(this.totalItems / this.itemsPerPage);
+    console.log(this.totalPages);
   }
 
   updatePageOptions(): void {
     this.pageOptions = Array.from({ length: this.totalPages }, (_, i) => i + 1);
-    // console.log(this.pageOptions);
+    console.log(this.pageOptions);
   }
 
   onItemsPerPageChange(): void {
-    this.currentPage = 1; // Reset to first page when items per page changes
+    // this.currentPage = 1; // reset page to first.
+    // Calculate total pages
     this.calculateTotalPages();
+
+    // Ensure currentPage is within valid range
+    if (this.currentPage < 1) this.currentPage = 1;
+    if (this.currentPage > this.totalPages) this.currentPage = 1;
     this.updatePageOptions();
   }
 
   onPageChange(): void {
     console.log('Current Page:', this.currentPage);
     console.log(this.pageOptions);
+    console.log('on page changes' + this.itemsPerPage);
   }
 }
